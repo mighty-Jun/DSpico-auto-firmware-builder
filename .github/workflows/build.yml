@@ -47,6 +47,9 @@ jobs:
                   yes | wf-pacman -S blocksds-toolchain
                   ln -s /opt/wonderful/thirdparty/blocksds /opt/blocksds
 
+            - name: Download DLDI driver
+              run: curl -L -O "https://github.com/LNH-team/dspico-dldi/releases/latest/download/DSpico.dldi"
+
             - uses: actions/checkout@v4
               with:
                   repository: LNH-team/dspico-bootloader
@@ -107,6 +110,7 @@ jobs:
                   mkdir -p deploy
                   cp ./dspico-bootloader/build/arm7.elf deploy/
                   cp ./dspico-bootloader/build/arm9.elf deploy/
+                  cp ./DSpico.dldi deploy/
                   cp ./firmware/DSpico1.uf2 deploy/
                   cp ./firmware/DSpico2.uf2 deploy/
                   cp ./last_shas.txt deploy/
