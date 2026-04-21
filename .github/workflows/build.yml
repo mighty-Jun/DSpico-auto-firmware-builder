@@ -99,6 +99,7 @@ jobs:
                   echo "FIRMWARE=$(git rev-parse HEAD)" >> ../last_shas.txt
                   cd ../dspico-bootloader
                   echo "BOOTLOADER=$(git rev-parse HEAD)" >> ../last_shas.txt
+                  date >> build_date.txt
 
             - name: Prepare deploy
               run: |
