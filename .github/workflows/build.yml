@@ -97,8 +97,9 @@ jobs:
                   > last_shas.txt
                   cd ./firmware
                   echo "FIRMWARE=$(git rev-parse HEAD)" >> ../last_shas.txt
-                  cd ../dspico-bootloader
+                  cd ../dspico-bootlo ader
                   echo "BOOTLOADER=$(git rev-parse HEAD)" >> ../last_shas.txt
+                  cd ..
                   date >> build_date.txt
 
             - name: Prepare deploy
