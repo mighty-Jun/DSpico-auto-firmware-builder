@@ -6,7 +6,7 @@ on:
     pull_request:
         branches: ["main"]
     repository_dispatch:
-        types: [remote_changed]
+        types: [remote_changed]   
     workflow_dispatch:
 
 env:
@@ -77,7 +77,7 @@ jobs:
 
             - name: Copy uf2
               run: |
-                  cp ./firmware/build/DSpico.uf2 ./firmware/build/DSpico1.uf2
+                  cp ./firmware/build/DSpico.uf2 ./firmware/DSpico1.uf2
 
             - name: Copy dummy2
               run: |
@@ -90,7 +90,7 @@ jobs:
 
             - name: Copy uf2
               run: |
-                  cp ./firmware/build/DSpico.uf2 ./firmware/build/DSpico2.uf2
+                  cp ./firmware/build/DSpico.uf2 ./firmware/DSpico2.uf2
 
             - name: Save build info
               run: |
@@ -105,8 +105,8 @@ jobs:
                   mkdir -p deploy
                   cp ./dspico-bootloader/build/arm7.elf deploy/
                   cp ./dspico-bootloader/build/arm9.elf deploy/
-                  cp ./firmware/build/DSpico1.uf2 deploy/
-                  cp ./firmware/build/DSpico2.uf2 deploy/
+                  cp ./firmware/DSpico1.uf2 deploy/
+                  cp ./firmware/DSpico2.uf2 deploy/
                   cp ./last_shas.txt deploy/
                   cp ./build_date.txt deploy/
 
