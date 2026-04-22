@@ -50,6 +50,12 @@ jobs:
             - name: Download DLDI driver
               run: curl -L -O "https://github.com/LNH-team/dspico-dldi/releases/latest/download/DSpico.dldi"
 
+            - name: Encrypt bootloader
+              run: |
+                   # Fetch keys
+                   curl -L -o encr_data.bin "https://github.com/DS-Homebrew/nds-bootstrap/raw/342b9408f761c1f3f03aac154c9e0aab1707e10f/retail/nitrofiles/encr_data.bin"
+                   curl -L -o dsi_encr_data.bin "https://github.com/DS-Homebrew/nds-bootstrap/raw/342b9408f761c1f3f03aac154c9e0aab1707e10f/retail/nitrofiles/dsi_encr_data.bin"
+
             - uses: actions/checkout@v4
               with:
                   repository: LNH-team/dspico-bootloader
@@ -111,6 +117,8 @@ jobs:
                   cp ./dspico-bootloader/build/arm7.elf deploy/
                   cp ./dspico-bootloader/build/arm9.elf deploy/
                   cp ./DSpico.dldi deploy/
+                  cp ./encr_data.bin deploy/
+                  cp ./dsi_encr_data.bin deploy/
                   cp ./firmware/DSpico1.uf2 deploy/
                   cp ./firmware/DSpico2.uf2 deploy/
                   cp ./last_shas.txt deploy/
